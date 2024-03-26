@@ -1,0 +1,22 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main>
+            <% if(prods.length > 0) {%>
+            
+            <p><ul>
+                <% for (let product of prods) { %>
+                <li><%= product.title %> ( Qty: <%= product.qty %>)</li>
+                <form action="/cart-delete-item" method="POST">
+                    <button class="btn" type="submit">Delete</button><br>
+                    <input type="hidden" name="productId" value="<%= product.id %>">
+                </form>
+                
+                <% } %>
+            </ul></p>
+           
+            <% } %>
+        </main>
+        <%- include('../includes/end.ejs') %>
